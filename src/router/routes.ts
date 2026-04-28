@@ -18,8 +18,23 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/profile',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/ProfileLayout.vue'),
     children: [{ path: '', component: () => import('pages/profile.vue') }],
+  },
+  {
+    path: '/notification-settings',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/settings/notifications.vue') }],
+  },
+  {
+    path: '/profile-settings',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/settings/profile.vue') }],
+  },
+  {
+    path: '/privacy-policy',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/policy.vue') }],
   },
 
   {

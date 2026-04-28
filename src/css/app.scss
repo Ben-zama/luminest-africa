@@ -1,11 +1,16 @@
 // app global css
 
-body.body--light {
-    background: #fcfcf7;
-    color: #0c0c0c;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body.body--dark {
-    background: #0c0c0c;
-    color: #fcfcf7;
+body {
+    background: var(--q-background);
+    color: var(--q-text-color);
+}
+
+.text-opaque {
+    opacity: 0.75
 }

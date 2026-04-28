@@ -1,23 +1,8 @@
 <template>
   <q-layout view="hhh lpR fFf">
 
-    <q-header bordered class="bg-transparent">
-      <q-toolbar class="q-py-md">
-        <div class="header-text column">
-          <div class="text-h5 text-weight-bold">Odenigwe</div>
-          <div class="text-caption text-opaque">
-            Nsukka LGA &nbsp; &bull; &nbsp; Enugu
-          </div>
-        </div>
-        <q-space />
-        <q-btn
-          flat
-          rounded
-          color="primary"
-          label="Switch zone"
-          class="text-capitalize text-weight-medium self-end"
-        />
-      </q-toolbar>
+    <q-header>
+
     </q-header>
 
     <q-page-container>
@@ -66,9 +51,6 @@
 </script>
 
 <style lang="scss" scoped>
-.header-text {
-  color: var(--q-text-color);
-}
 .q-tabs {
   color: var(--q-text-color);
   a {
