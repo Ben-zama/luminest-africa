@@ -3,8 +3,13 @@ import type { RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/indexPage.vue') }],
+  },
+  {
+    path: '/feed',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [{ path: '', component: () => import('pages/feed.vue') }],
   },
   {
     path: '/schedule',
@@ -35,6 +40,31 @@ const routes: RouteRecordRaw[] = [
     path: '/privacy-policy',
     component: () => import('layouts/EmptyLayout.vue'),
     children: [{ path: '', component: () => import('pages/policy.vue') }],
+  },
+  {
+    path: '/onboarding/phone',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/onboarding/phone.vue') }],
+  },
+  {
+    path: '/onboarding/otp',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/onboarding/otp.vue') }],
+  },
+  {
+    path: '/onboarding/name',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/onboarding/name.vue') }],
+  },
+  {
+    path: '/onboarding/area',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/onboarding/area.vue') }],
+  },
+  {
+    path: '/onboarding/zone-type',
+    component: () => import('layouts/EmptyLayout.vue'),
+    children: [{ path: '', component: () => import('pages/onboarding/zone-type.vue') }],
   },
 
   {

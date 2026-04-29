@@ -18,7 +18,7 @@
         class="q-py-xs"
       >
         <q-route-tab
-          to="/"
+          to="/feed"
           icon="dynamic_feed"
           label="Feed"
           exact

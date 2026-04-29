@@ -1,113 +1,72 @@
 <template>
-  <q-page class="col q-pb-xl">
+  <q-page class="column q-px-lg q-pb-xl" style="height: 100vh;">
 
-    <q-card flat :class="['q-mt-md q-mx-sm q-mb-lg shadow-2 top-status-card', isLightOn ? 'bg-positive-tint' : 'bg-negative-tint']">
-      <q-card-section class="column q-py-md">
-        <div class="text-h4 text-weight-bold q-mb-sm">{{ isLightOn ? 'Light is up' : 'Light is off' }}</div>
-        <div class="text-caption text-weight-medium text-opaque">
-          Last reported 4 mins ago &nbsp; &bull; &nbsp; 3 reports this hr
-        </div>
-      </q-card-section>
-    </q-card>
+    <q-space />
 
-    <section class="q-px-md">
-      <div class="text-subtitle1 text-weight-bold text-opaque q-mb-sm">Recent reports</div>
+    <div class="column items-center q-mb-xl">
+      <div class="logo-box flex flex-center">
+            <img src="/logo.svg" alt="">
+      </div>
 
-      <q-list class="q-gutter-y-sm">
-        <q-item
-          v-for="(report, index) in recentReports"
-          :key="index"
-          class="q-px-none q-py-sm"
-        >
-          <q-item-section avatar style="min-width: auto" class="q-pr-md">
-            <div :class="['status-circle', report.isOn ? 'bg-positive' : 'bg-negative']"></div>
-          </q-item-section>
+      <h1 class="text-h5 text-weight-bold text-center q-mt-none q-mb-sm">
+        Know when light is coming
+      </h1>
 
-          <q-item-section>
-            <q-item-label class="text-body1 text-weight-medium">
-              {{ report.title }}
-            </q-item-label>
-            <q-item-label caption class="text-weight-medium text-opaque">
-              {{ report.time }}
-            </q-item-label>
-          </q-item-section>
+      <p class="text-body2 text-center text-opaque q-px-sm">
+        Community-powered schedules for your area
+      </p>
+    </div>
 
-          <q-item-section side>
-            <q-badge
-              outline
-              rounded
-              :color="getPillColor(report)"
-              :label="report.type"
-              :class="['q-px-md q-py-xs text-caption', getPillBgClass(report)]"
-            />
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </section>
+    <q-space />
+
+    <div class="column items-center w-full q-mt-auto">
+      <q-btn
+        unelevated
+        no-caps
+        color="positive"
+        label="Get started"
+        class="full-width text-weight-bold text-body1 q-py-sm"
+        style="border-radius: 12px;"
+        @click="goToNextStep"
+      />
+
+      <div class="text-caption text-opaque q-mt-md">
+        Free. Works on any Android phone.
+      </div>
+    </div>
 
   </q-page>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-// Top card state (Mocked as true for this example)
-const isLightOn = ref(true)
+const router = useRouter()
 
-// Mock data reflecting the exact feed items from the MVP screen spec
-const recentReports = [
-  { title: 'Light came on', time: '4 mins ago', type: 'realtime', isOn: true },
-  { title: 'Light came on', time: '6 mins ago', type: 'realtime', isOn: true },
-  { title: 'Light came on', time: '18 mins ago', type: 'checkin', isOn: true },
-  { title: 'Light went off', time: '1 hr ago', type: 'realtime', isOn: false },
-  { title: 'Light went off', time: '2 hrs ago', type: 'realtime', isOn: false }
-]
-
-// Helper to determine text/outline color for the pill
-const getPillColor = (report) => {
-  if (report.type === 'checkin') return 'grey-6' // Neutral
-  return report.isOn ? 'positive' : 'negative'
-}
-
-// Helper to determine the subtle background fill for the pill
-const getPillBgClass = (report) => {
-  if (report.type === 'checkin') return 'pill-bg-neutral'
-  return report.isOn ? 'pill-bg-positive' : 'pill-bg-negative'
+const goToNextStep = () => {
+  // Navigate to the Phone Number Entry screen (Page 2 of Onboarding)
+  router.push('/onboarding/phone')
 }
 </script>
 
 <style lang="scss" scoped>
-/* Top Status Card Styles */
-.top-status-card {
-  border-radius: 12px;
-  transition: background-color 0.3s ease;
+.w-full {
+  width: 100%;
 }
 
-.bg-positive-tint {
-  background: rgba($positive, 0.15) !important;
+/* Custom logo styling based on the mockup */
+.logo-box {
+  width: 192px;
+  height: 192px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
-.bg-negative-tint {
-  background: rgba($negative, 0.15) !important;
-}
-
-/* List Item Styles */
-.status-circle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-
-/* Pill Background Styles */
-.pill-bg-positive {
-  background: rgba($positive, 0.15);
-}
-
-.pill-bg-negative {
-  background: rgba($negative, 0.15);
-}
-
-.pill-bg-neutral {
-  background: rgba(#9e9e9e, 0.15);
+.logo-circle {
+  width: 44px;
+  height: 44px;
 }
 </style>
